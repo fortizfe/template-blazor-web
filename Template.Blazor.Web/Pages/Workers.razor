@@ -1,0 +1,22 @@
+﻿@page "/workers"
+
+@using Template.Blazor.Web.Models
+@using Template.Blazor.Web.Services.HttpServices
+
+@inject IHttpService apiHttpService
+
+<h1>Workers</h1>
+
+<p>Your workers</p>
+
+<Template.Blazor.Web.Components.Workers.Table Workers=workers />
+
+@code {
+
+    private IEnumerable<WorkerModel> workers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        workers = await apiHttpService.GetWorkers();
+    }
+}

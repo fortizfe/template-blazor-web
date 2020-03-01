@@ -1,0 +1,35 @@
+﻿@using Template.Blazor.Web.Models
+
+@if (Workers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>TagID</th>
+                <th>Enabled</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var worker in Workers)
+            {
+                <tr>
+                    <td>@worker.Name</td>
+                    <td>@worker.Username</td>
+                    <td>@worker.Tagid</td>
+                    <td>@worker.Enabled</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Parameter]
+    public IEnumerable<WorkerModel> Workers { get; set; }
+}
